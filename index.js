@@ -1,5 +1,6 @@
 const fs = require('fs');
 const http = require('http');
+const url = require('url');
 ///////////////////////////////
 
 /*
@@ -14,7 +15,7 @@ console.log('File written');
 */
 
 //Non-blocking, asynchronous way
-
+/*
 fs.readFile('./txt/start.txt','utf-8', (err, data) => {
     if (err) return console.log("ERROR");
    fs.readFile(`./txt/${data}.txt`,'utf-8', (err, data2) => {
@@ -34,15 +35,27 @@ fs.readFile('./txt/start.txt','utf-8', (err, data) => {
 })
 
 console.log("will read file");
-
+*/
 //////////////////////////////////////////////
 //SERVER
 
 const server = http.createServer((req, res) => {
-    res.end('Hello from the server!');
+   const pathName = req.url;
+   if(pathName === '/' || pathName === '/overview') {
+    res.end('This is the overview');
+   } else if (pathName === '/product') {
+    res.end("this is the product");
+   } else {
+       res.writeHead(404, {
+        'Content-type': 'text/html',
+        'my-own-header': 'hello world',
+
+       });
+       res.end('<h1>page not found!</h1>');
+   }
 });
 
-server.listen(8000, '127.0.0.1', () => {
+server.listen(8000, '127.0.0.3', () => {
     console.log('Listening to requests on port 8000');
 })
 
