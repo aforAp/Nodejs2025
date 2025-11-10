@@ -2,6 +2,25 @@
 
 //SERVER
 
+const fs = require("fs");
+const http = require("http");
+
+fs.readFile('../txt/hello/input.txt', 'utf-8', (err, data) => {
+    console.log(data);
+    fs.writeFile('../txt/hello/input2.txt', `${data}`, 'utf-8', (err, data) => {
+        console.log("hte file writtter successfully");
+    })
+})
+
+
+const server = http.createServer((req, res) => {
+    res.end("it was amazing....");
+})
+
+    server.listen(8000, '127.0.0.1', () => {
+        console.log("the server was running");
+    })
+/*
 const server = http.createServer((req, res) => {
    const pathName = req.url;
    if(pathName === '/' || pathName === '/overview') {
@@ -23,3 +42,4 @@ server.listen(8000, '127.0.0.3', () => {
 })
 
 //8000 => PORT 127.0.0.1 => ip once open 127.0.0.1
+*/

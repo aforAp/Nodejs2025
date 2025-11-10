@@ -39,13 +39,23 @@ console.log("will read file");
 //////////////////////////////////////////////
 //SERVER
 
+ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8', (err, data) => {
+})
+const dataObj = JSON.parse(data);
+//we need the data at once so we can use sync versionss.and it will excuted at once
+
+
 const server = http.createServer((req, res) => {
    const pathName = req.url;
    if(pathName === '/' || pathName === '/overview') {
     res.end('This is the overview');
    } else if (pathName === '/product') {
     res.end("this is the product");
-   } else {
+   } else if (pathName === '/api') {
+        res.writeHead(200, {'Content-type': 'application/json'})
+        res.end(data);
+   } 
+   else {
        res.writeHead(404, {
         'Content-type': 'text/html',
         'my-own-header': 'hello world',
@@ -55,7 +65,7 @@ const server = http.createServer((req, res) => {
    }
 });
 
-server.listen(8000, '127.0.0.3', () => {
+server.listen(8000, '127.0.0.5', () => {
     console.log('Listening to requests on port 8000');
 })
 
