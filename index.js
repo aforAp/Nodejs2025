@@ -1,3 +1,4 @@
+/*
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
@@ -43,7 +44,7 @@ console.log("will read file");
 
 
 
-
+/*
 
 const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, 'utf-8');
 const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, 'utf-8');
@@ -101,6 +102,6 @@ server.listen(8000, '127.0.0.1', () => {
 
 //8000 => PORT 127.0.0.1 => ip once open 127.0.0.1
 
-
+*/
 
 

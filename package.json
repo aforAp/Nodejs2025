@@ -13,16 +13,32 @@
   "license": "ISC",
   "author": "Satheesh",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon natoursAPI/servernatours.js",
+    "start:prod": "NODE_ENV=production nodemon natoursAPI/servernatours.js"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^4.21.2",
+    "mongodb": "^7.0.0",
+    "mongoose": "^5.5.2",
+    "morgan": "^1.10.1",
     "slugify": "^1.6.6",
     "superagent": "^10.2.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.37.5",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
